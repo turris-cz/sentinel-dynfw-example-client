@@ -89,6 +89,7 @@ def main():
     ctx = zmq.Context.instance()
     sub = prepare_socket(ctx, args.server, args.port, server_key_file)
 
+    print("DynFW client connected and running...")
     while True:
         msg = sub.recv_multipart()
         msg_type, payload = parse_msg(msg)
