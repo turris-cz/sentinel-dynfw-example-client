@@ -153,7 +153,7 @@ def parse_msg(data):
         msg_type = str(data[0], encoding="UTF-8")
         if not SN_MSG.match(msg_type):
             raise InvalidMsgError("Bad message type definition")
-        payload = msgpack.unpackb(data[1], encoding="UTF-8")
+        payload = msgpack.unpackb(data[1])
 
     except IndexError:
         raise InvalidMsgError("Not enough parts in message")
