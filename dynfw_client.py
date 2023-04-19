@@ -54,13 +54,14 @@ def process_message(msg_type, payload):
     Put something cool here!
     """
     def make_report(data, preview_len=3):
-        return "List of {} addresses in version {}/{}: {}{}".format(
-                len(data["list"]),
-                data["version"],
-                data["serial"],
-                ", ".join(data["list"][:preview_len]),
-                "..." if len(data["list"]) > preview_len else ""
-                )
+        return "{{'version': {}, 'serial': {}, 'ts': {}, list: Length {}, {}{}}}".format(
+            data["version"],
+            data["serial"],
+            data["ts"],
+            len(data["list"]),
+            ", ".join(data["list"][:preview_len]),
+            "..." if len(data["list"]) > preview_len else ""
+        )
 
     if msg_type == "dynfw/delta":
         print(msg_type, payload, sep=": ")
